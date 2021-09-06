@@ -107,7 +107,6 @@ export default function Test() {
             </>
           ))}
         </div>
-
         {/* Names List */}
         <div className={styles.namesContainer}>
           <h1 className="headingOneTitle">Heading One</h1>
