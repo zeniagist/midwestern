@@ -5,6 +5,8 @@ import axios from "axios";
 
 import { Form, Col, Row } from "react-bootstrap";
 
+import styles from "../styles/contact.module.scss";
+
 class ContactForm extends React.Component {
   constructor() {
     super();
@@ -165,7 +167,9 @@ class ContactForm extends React.Component {
                 />
                 <span
                   className={
-                    this.state.errors.email ? "formEmailError" : "hidden"
+                    this.state.errors.email
+                      ? styles.formEmailError
+                      : styles.hidden
                   }
                 >
                   Required
@@ -181,7 +185,7 @@ class ContactForm extends React.Component {
               placeholder="Message"
               className={
                 this.state.errors.email
-                  ? "form-control formMessage"
+                  ? "form-control " + styles.formMessage
                   : "form-control"
               }
               rows={5}
@@ -189,12 +193,14 @@ class ContactForm extends React.Component {
             />
           </div>
 
-          <div className="formBtnContainer">
+          <div className={styles.formBtnContainer}>
             <input
               type="submit"
               value="Submit"
               className={
-                this.state.errors.email ? "formBtn formBtnError" : "formBtn"
+                this.state.errors.email
+                  ? "formBtn " + styles.formBtnError
+                  : "formBtn"
               }
               onSubmit={this.onPost}
             />

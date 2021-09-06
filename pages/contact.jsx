@@ -4,6 +4,7 @@ import { Form, FormGroup, FormLabel, FormControl } from "react-bootstrap";
 
 import Navbar from "../components/navbar";
 import ContactForm from "../components/contactform";
+import styles from "../styles/contact.module.scss";
 
 export default function Contact() {
   const [contactInfo, setContactInfo] = useState([]);
@@ -28,20 +29,20 @@ export default function Contact() {
   return (
     <>
       <Navbar pathName={pathName} />
-      <main className="main">
+      <main className={styles.main}>
         {/* Contact Info */}
-        <div className="contactInfoContainer">
-          <div className="infoContainer">
+        <div className={styles.contactInfoContainer}>
+          <div className={styles.infoContainer}>
             <h1 className="headingOneTitle">{contactInfo.title}</h1>
             <div className="headingOneTitleUnderline"></div>
-            <p className="contactInfoContent">{contactInfo.content}</p>
+            <p className={styles.contactInfoContent}>{contactInfo.content}</p>
           </div>
         </div>
 
         {/* Contact Form */}
-        <div className="contactFormContainer">
-          <div className="formContainer">
-            <h2 className="formTitle">{contactForm.name}</h2>
+        <div className={styles.contactFormContainer}>
+          <div className={styles.formContainer}>
+            <h2 className={styles.formTitle}>{contactForm.name}</h2>
             <ContactForm />
           </div>
         </div>
