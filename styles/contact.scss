@@ -5,6 +5,13 @@ $midGray: #858585;
 $lightGray: #f5f5f5;
 $red: #800000;
 
+/*
+*
+* =====================
+* GENERAL
+* =====================
+*
+*/
 .main {
   display: flex;
   flex-direction: row;
@@ -13,6 +20,13 @@ $red: #800000;
   background: linear-gradient(90deg, $darkGray 50%, $white 50%);
 }
 
+/*
+*
+* =====================
+* CONTACT INFO (LEFT PAGE)
+* =====================
+*
+*/
 .contactInfoContainer {
   color: white;
   width: 50%;
@@ -24,6 +38,13 @@ $red: #800000;
   height: 200px;
 }
 
+/*
+*
+* =====================
+* CONTACT FORM (RIGHT PAGE)
+* =====================
+*
+*/
 .contactFormContainer {
   color: $darkGray;
   width: 50%;
@@ -39,8 +60,8 @@ $red: #800000;
   margin-bottom: 50px;
 }
 
-.formItem {
-  background-color: #f5f5f5;
+.hidden {
+  display: none;
 }
 
 .formEmailError {
@@ -74,8 +95,4 @@ $red: #800000;
 .formBtnError {
   position: relative;
   transform: translate(0%, -20%);
-}
-
-.hidden {
-  display: none;
 }
