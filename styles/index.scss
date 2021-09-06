@@ -3,10 +3,24 @@ $white: #ffffff;
 $darkGray: #222222;
 $midGray: #858585;
 
+/*
+*
+* =====================
+* GENERAL
+* =====================
+*
+*/
 .container {
   background-color: $darkGray;
 }
-// Info Cards
+
+/*
+*
+* =====================
+* INFO CONTENT CARDS
+* =====================
+*
+*/
 .cardContainer {
   display: flex;
   flex-direction: row;
@@ -74,7 +88,13 @@ article {
   border: none;
 }
 
-// Names
+/*
+*
+* =====================
+* LIST OF JSON NAMES
+* =====================
+*
+*/
 .namesDescription {
   color: $white;
 }
