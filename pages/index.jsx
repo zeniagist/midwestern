@@ -36,7 +36,6 @@ export default function Test() {
       name: "Tyler Viles",
     },
   ];
-
   const [namesList, setNamesList] = useState([]);
 
   const handleNamesListClick = () => {
