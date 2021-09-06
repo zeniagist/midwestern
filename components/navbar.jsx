@@ -13,13 +13,7 @@ export default function Navbar({ pathName }) {
       }
     >
       <div className="container-xl">
-        <img
-          src="/Logo.png"
-          alt="Logo"
-          className="navLogo"
-          width={260}
-          height={60}
-        />
+        <img src="/Logo.png" alt="Logo" className="navLogo" />
         <div>
           {/* nav link  for home and contact pages*/}
           <ul>
