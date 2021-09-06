@@ -2,23 +2,27 @@ $gold: #debf79;
 $white: #ffffff;
 $darkGray: #222222;
 
-.nav-link {
+.navLink {
   color: $gold;
   font-weight: 700;
   font-size: 1.5em;
 }
 
+.navLink:hover {
+  text-decoration: none;
+}
+
 // home page background
 .homeNav {
   background: $darkGray;
-  .nav-link:hover {
+  .navLink:hover {
     color: $white;
   }
 }
 // contact page background
 .contactNav {
   background: linear-gradient(90deg, $darkGray 50%, $white 50%);
-  .nav-link:hover {
+  .navLink:hover {
     color: $darkGray;
   }
 }
