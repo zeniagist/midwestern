@@ -1,0 +1,31 @@
+$gold: #debf79;
+$white: #ffffff;
+$darkGray: #222222;
+
+.nav-link {
+  color: $gold;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.homeNav {
+  background: $darkGray;
+  .nav-link:hover {
+    color: $white;
+  }
+}
+
+.contactNav {
+  background: linear-gradient(90deg, $darkGray 50%, $white 50%);
+  .nav-link:hover {
+    color: $darkGray;
+  }
+}
+
+// Media Queries
+@media only screen and (max-width: 600px) {
+  .navLogo {
+    width: 60%;
+    height: auto;
+  }
+}
