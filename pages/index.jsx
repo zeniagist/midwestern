@@ -81,14 +81,16 @@ export default function Test() {
                 <section className="contentCard">
                   <div className="cardImg">
                     <article>
-                      <img
+                      <Image
                         src={
                           item.id === 1
-                            ? "Talkie.png"
+                            ? "/Talkie.png"
                             : item.id === 2
-                            ? "Rabbit.png"
-                            : "Shield.png"
+                            ? "/Rabbit.png"
+                            : "/Shield.png"
                         }
+                        width={70}
+                        height={80}
                         alt={item.title}
                       />
                     </article>

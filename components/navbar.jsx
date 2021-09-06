@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
 import { Nav } from "react-bootstrap";
@@ -13,7 +12,13 @@ export default function Navbar({ pathName }) {
       }
     >
       <div className="container-xl">
-        <img src="Logo.png" alt="Logo" className="navLogo" />
+        <Image
+          src="/Logo.png"
+          alt="Logo"
+          className="navLogo"
+          width={260}
+          height={60}
+        />
         <div>
           {/* nav link  for home and contact pages*/}
           <ul>
