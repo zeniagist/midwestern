@@ -2,7 +2,6 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import Link from "next/link";
-
 import styles from "../styles/navbar.module.scss";
 
 export default function Navbar({ pathName }) {
