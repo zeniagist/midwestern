@@ -11,7 +11,7 @@ export default function Navbar({ pathName }) {
       }
     >
       <div className="container-xl">
-        <Image src="Logo.png" alt="Logo" className="navLogo" />
+        <img src="Logo.png" alt="Logo" className="navLogo" />
         <div>
           <ul>
             {pathName === "/contact" && (
