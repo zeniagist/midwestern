@@ -4,6 +4,7 @@ import { React, Component, useState, useEffect } from "react";
 import Image from "next/image";
 
 import Navbar from "../components/navbar";
+import styles from "../styles/index.module.scss";
 
 export default function Test() {
   const [cardContent, setCardContent] = useState([]);
@@ -71,15 +72,15 @@ export default function Test() {
     <>
       <Navbar pathName={pathName} />
 
-      <div className="container">
+      <div className={"container " + styles.container}>
         {/* Cards */}
-        <div className="cardContainer">
+        <div className={styles.cardContainer}>
           {cardContent.map((item) => (
             <>
               <div key={item.id}>
-                <section className="contentCard">
-                  <div className="cardImg">
-                    <article>
+                <section className={styles.contentCard}>
+                  <div className={styles.cardImg}>
+                    <article className={styles.article}>
                       <img
                         src={
                           item.id === 1
@@ -92,13 +93,13 @@ export default function Test() {
                       />
                     </article>
                   </div>
-                  <div className="cardDetails">
-                    <h1 className="cardTitle">{item.title}</h1>
-                    <p className="cardContent">{item.content}</p>
+                  <div className={styles.cardDetails}>
+                    <h1 className={styles.cardTitle}>{item.title}</h1>
+                    <p className={styles.cardContent}>{item.content}</p>
                   </div>
-                  <div className="cardBtnContainer">
-                    <article>
-                      <button className="cardBtn">Learn More</button>
+                  <div className={styles.cardBtnContainer}>
+                    <article className={styles.article}>
+                      <button className={styles.cardBtn}>Learn More</button>
                     </article>
                   </div>
                 </section>
@@ -108,12 +109,12 @@ export default function Test() {
         </div>
 
         {/* Names List */}
-        <div className="namesContainer">
+        <div className={styles.namesContainer}>
           <h1 className="headingOneTitle">Heading One</h1>
           <div className="headingOneTitleUnderline"></div>
-          <p className="namesDescription">
+          <p className={styles.namesDescription}>
             Click{" "}
-            <span className="namesLink" onClick={handleNamesListClick}>
+            <span className={styles.namesLink} onClick={handleNamesListClick}>
               this link
             </span>{" "}
             to show unordered list of 2 Javascript objects with duplicates
@@ -123,7 +124,7 @@ export default function Test() {
             <ul>
               {namesList.map((name) => (
                 <div key={name.name}>
-                  <li className="nameItem">{name.name}</li>
+                  <li className={styles.nameItem}>{name.name}</li>
                 </div>
               ))}
             </ul>
