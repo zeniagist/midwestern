@@ -1,34 +1,120 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Technical Challenge
+This is a simple challenge to assess a base skill set and architectural mindset.
+Complete to the best of your ability, if you have any questions reach out your contact.
 
-## Getting Started
+You will find all necessary assets provided in this repository.
 
-First, run the development server:
+Once complete, place your codebase in a github repository and provide the link your contact at Midwestern.
 
-```bash
-npm run dev
-# or
-yarn dev
+## 1. Front-end Challenge
+Any framework or package may be used in addition to any that may have been requested by your contact.
+
+- Programmatically build out both layouts using HTML/CSS/SASS/JS or any other stack/framework mentioned
+  by your contact, see screenshots and [Figma](https://api.mwi.dev/figma) prototype for what the
+  finished product should look like.
+  - Desktop and mobile views are available from the left side menu in [Figma](https://api.mwi.dev/figma)
+  - Scale elements/sections as necessary for content breaks in a responsive manner.
+  - **Fonts**: https://fonts.google.com/specimen/Poppins
+    - Bold
+    - Medium
+  - **Primary Colors**:
+    - Gold: #DEBF79
+    - Dark Gray (background): #222222
+    - Mid Gray (text): #858585
+    - Light Gray (inputs): #F5F5F5
+    - Red: #800000
+- At the bottom of the mock up there is a Javascript puzzle. Please use the following data.
+
+Object 1
+- Matt Johnson
+- Bart Paden
+- Ryan Doss
+- Jared Malcolm
+
+Object 2
+- Matt Johnson
+- Bart Paden
+- Jordan Heigle
+- Tyler Viles
+
+Result Object
+- Matt Johnson
+- Bart Paden
+- Ryan Doss
+- Jared Malcolm
+- Jordan Heigle
+- Tyler Viles
+
+## 2. Integration Challenge
+We've developed a very basic API that allows you pull content for the sections in the design.
+
+Please use the following endpoints to populate each of the Lorem Ipsum sections as well as submitting the contact form.
+
+### Base URL
+https://api.mwi.dev
+
+### Content Sections
+- GET `/content/{page}` {page} can be `home` or `contact`
+
+Will return an array of JSON objects containing a unique title and description for each section of the design.
+
+Images are not provided from the API, please hardcode the urls for these.
+
+**Example Response**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "page_id": 1,
+      "title": "Some Title",
+      "content": "Some chunk of text from the API",
+      "page": {
+        "id": 1,
+        "label": "home",
+        "name": "Home",
+        "created_at": "timestamp",
+        "updated_at": "timestamp"
+      },
+      "created_at": "timestamp",
+      "updated_at": "timestamp"
+    }
+  ]
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Contact Form
+- POST `/contact`
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Accepts a form data object with all the key/value pairs from the form.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+**Example Payload**
+```json
+{
+  "first_name": "First",
+  "last_name": "Last",
+  "title": "Title",
+  "email": "some@email.com",
+  "message": "Message content text"
+}
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 3. Back-end Challenge
+This will allow the client front-end to request content for all Lorem Ipsum sections as well as submit and store results from the contact form.
 
-## Learn More
+- Build a basic, non-authenticated API
+- Setup up a DB of your choosing (MySQL, Postgres etc.)
+- Write migrations for database table and seeders for housing Lorem Ipsum content
+- Write migrations for database table to store results of the contact form
+- Create GET endpoint that returns content from the DB for each of the Lorem Ipsum sections (URL path up to your discretion)
+  - Content for title
+  - Content for paragraph
+  - Images src may be hardcoded, or you may store URL in DB
+- Create POST endpoint for storing the results of the contact form in the DB on submit (URL path up to your discretion)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Resources
+- [Figma](https://api.mwi.dev/figma)
+- [Next.js by Vercel - The React Framework](https://nextjs.org/)
+- [NestJS - A progressive Node.js framework](https://nestjs.com/)
+- [Laravel](https://laravel.com)
