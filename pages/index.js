@@ -80,7 +80,7 @@ export default function Test() {
                 <section className="contentCard">
                   <div className="cardImg">
                     <article>
-                      <Image
+                      <img
                         src={
                           item.id === 1
                             ? "Talkie.png"
