@@ -1,71 +1,95 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "bootstrap-css-only";
 import "react-bootstrap";
 import axios from "axios";
 
-import {
-  Form,
-  FormGroup,
-  FormLabel,
-  FormControl,
-  Col,
-  Row,
-  Button,
-} from "react-bootstrap";
+import { Form, Col, Row } from "react-bootstrap";
 
-export default class ContactForm extends React.Component {
-  constructor(props) {
-    super(props);
+class ContactForm extends React.Component {
+  constructor() {
+    super();
 
     this.state = {
-      email: "",
-      errors: [],
+      input: {},
+
+      errors: {},
     };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  hasError(key) {
-    return this.state.errors.indexOf(key) !== -1;
+  // get contact form input values
+  handleChange(event) {
+    let input = this.state.input;
+
+    input[event.target.name] = event.target.value;
+
+    this.setState({
+      input,
+    });
   }
 
-  handleInputChange(event) {
-    var key = event.target.name;
-    var value = event.target.value;
-    var obj = {};
-    obj[key] = value;
-    this.setState(obj);
-  }
-
-  // validate email
+  // submit input values
   handleSubmit(event) {
     event.preventDefault();
 
-    var errors = [];
+    if (this.validate()) {
+      console.log(this.state);
 
-    // parameters
-    const expression = /\S+@\S+/;
-    var validEmail = expression.test(String(this.state.email).toLowerCase());
+      let input = {};
 
-    if (!validEmail) {
-      errors.push("email");
+      input["firstName"] = "";
+
+      input["lastName"] = "";
+
+      input["title"] = "";
+
+      input["email"] = "";
+
+      input["message"] = "";
+
+      this.setState({ input: input });
+
+      alert("Your form has been submitted!");
+    }
+  }
+
+  // validate email address
+  validate() {
+    let input = this.state.input;
+
+    let errors = {};
+
+    let isValid = true;
+
+    if (!input["email"]) {
+      isValid = false;
+
+      errors["email"] = "Required";
+    }
+
+    if (typeof input["email"] !== "undefined") {
+      var pattern = new RegExp(
+        /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+      );
+
+      if (!pattern.test(input["email"])) {
+        isValid = false;
+
+        errors["email"] = "Please enter valid email address.";
+      }
     }
 
     this.setState({
       errors: errors,
     });
 
-    if (errors.length > 0) {
-      return false;
-    } else {
-      alert("Form has been submitted!");
-    }
+    return isValid;
   }
 
   // post contact form data to API
-  onSubmit(e) {
+  onPost(e) {
     e.preventDefault();
     axios({
       method: "POST",
@@ -83,73 +107,102 @@ export default class ContactForm extends React.Component {
 
   render() {
     return (
-      <Form className="row" onSubmit={this.onSubmit.bind(this)} method="POST">
-        <Row>
-          <Col>
-            <Form.Control
-              type="text"
-              placeholder="First Name"
-              className="mb-3 formItem"
-              name="firstName"
-            />
-          </Col>
-          <Col>
-            <Form.Control
-              type="text"
-              placeholder="Last name"
-              className="mb-3 formItem"
-            />
-          </Col>
-        </Row>
+      <div>
+        <Form onSubmit={this.handleSubmit}>
+          <Row>
+            <Col>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="name"
+                  value={this.state.input.firstName}
+                  className="form-control"
+                  placeholder="First Name"
+                  id="firstName"
+                />
+              </div>
+            </Col>
+            <Col>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="name"
+                  value={this.state.input.lastName}
+                  className="form-control"
+                  placeholder="Last Name"
+                  id="lastName"
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="name"
+                  value={this.state.input.title}
+                  className="form-control"
+                  placeholder="Title"
+                  id="title"
+                />
+              </div>
+            </Col>
+            <Col>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="email"
+                  value={this.state.input.email}
+                  onChange={this.handleChange}
+                  className={
+                    this.state.errors.email
+                      ? "form-control border-danger"
+                      : "form-control"
+                  }
+                  placeholder="Enter email"
+                  id="email"
+                />
+                <span
+                  className={
+                    this.state.errors.email ? "formEmailError" : "hidden"
+                  }
+                >
+                  Required
+                </span>
+              </div>
+            </Col>
+          </Row>
 
-        <Row>
-          <Col>
-            <Form.Control
-              type="text"
-              placeholder="Title"
-              className="mb-3 formItem"
-            />
-          </Col>
-          <Col>
-            <Form.Control
-              type="email"
-              placeholder="Email"
+          <div className="form-group">
+            <textarea
+              name="message"
+              value={this.state.input.comment}
+              placeholder="Message"
               className={
-                this.hasError("email")
-                  ? "form-control border-danger mb-3 formItem"
-                  : "form-control mb-3 formItem"
+                this.state.errors.email
+                  ? "form-control formMessage"
+                  : "form-control"
               }
-              value={this.state.email}
-              onChange={this.handleInputChange}
+              rows={5}
+              id="message"
             />
-            <span
-              className={this.hasError("email") ? "formEmailError" : "hidden"}
-            >
-              Required
-            </span>
-          </Col>
-        </Row>
-        <Row className="mb-3 col-md-12">
-          <Form.Control
-            as="textarea"
-            rows={5}
-            placeholder="Message"
-            className={
-              this.hasError("email") ? "formItem formMessage" : "formItem"
-            }
-          />
-        </Row>
-        <div className="col-lg-12 formBtnContainer">
-          <button
-            className={
-              this.hasError("email") ? "formBtn formBtnError" : "formBtn"
-            }
-            onClick={this.handleSubmit}
-          >
-            Submit
-          </button>
-        </div>
-      </Form>
+          </div>
+
+          <div className="formBtnContainer">
+            <input
+              type="submit"
+              value="Submit"
+              className={
+                this.state.errors.email ? "formBtn formBtnError" : "formBtn"
+              }
+              onSubmit={this.onPost}
+            />
+          </div>
+        </Form>
+      </div>
     );
   }
 }
+
+export default ContactForm;
