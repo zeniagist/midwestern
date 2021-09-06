@@ -1,121 +1,93 @@
+$gold: #debf79;
+$white: #ffffff;
+$darkGray: #222222;
+$midGray: #858585;
+
 .container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
+  background-color: $darkGray;
+}
+// Info Cards
+.cardContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  flex-wrap: wrap;
+  margin-top: 50px;
 }
 
-.main {
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.contentCard {
+  height: 350px;
+  width: 350px;
+  margin-right: 20px;
+  border: none;
+  background-color: $white;
+  border-radius: 2px;
 }
 
-.footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.contentCard:last-child {
+  margin-bottom: 50px;
 }
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+article {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
+.cardImg {
+  height: 40%;
   text-align: center;
 }
 
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
+.cardDetails {
+  height: 40%;
+  padding: 0 10% 0 10%;
 }
 
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+.cardTitle {
+  font-weight: 700;
+  font-size: 2.5em;
+  color: $darkGray;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -20%);
 }
 
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
+.cardContent {
+  color: $darkGray;
+  word-spacing: 5px;
 }
 
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
+.cardBtnContainer {
+  height: 20%;
+  text-align: center;
+}
+
+.cardBtn {
+  font-size: 12px;
+  padding: 10px;
+  background: $gold;
+  padding: 10px 20px 10px 20px;
   text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
+  color: $white;
+  border: none;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+// Names
+.namesDescription {
+  color: $white;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.namesLink {
+  color: $gold;
 }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.namesLink:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.nameItem {
+  color: $white;
 }
