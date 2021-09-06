@@ -39,13 +39,13 @@ export default class ContactForm extends React.Component {
     this.setState(obj);
   }
 
+  // validate email
   handleSubmit(event) {
     event.preventDefault();
 
-    //VALIDATE
     var errors = [];
 
-    //email
+    // parameters
     const expression = /\S+@\S+/;
     var validEmail = expression.test(String(this.state.email).toLowerCase());
 
@@ -64,6 +64,7 @@ export default class ContactForm extends React.Component {
     }
   }
 
+  // post contact form data to API
   onSubmit(e) {
     e.preventDefault();
     axios({
