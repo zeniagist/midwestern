@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
-import { Nav } from "react-bootstrap";
 import Link from "next/link";
+
+import { Nav } from "react-bootstrap";
 
 export default function Navbar({ pathName }) {
   return (
