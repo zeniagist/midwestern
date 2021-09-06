@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function Navbar({ pathName }) {
   return (
     <Nav
+      // background color for home and contact pages
       className={
         "navbar " + (pathName === "/contact" ? "contactNav" : "homeNav")
       }
@@ -14,6 +15,7 @@ export default function Navbar({ pathName }) {
       <div className="container-xl">
         <img src="Logo.png" alt="Logo" className="navLogo" />
         <div>
+          {/* nav link  for home and contact pages*/}
           <ul>
             {pathName === "/contact" && (
               <li>
