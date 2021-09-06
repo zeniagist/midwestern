@@ -8,6 +8,7 @@ $darkGray: #222222;
   font-size: 1.5em;
 }
 
+// home page background
 .homeNav {
   background: $darkGray;
   .nav-link:hover {
@@ -15,6 +16,7 @@ $darkGray: #222222;
   }
 }
 
+// contact page background
 .contactNav {
   background: linear-gradient(90deg, $darkGray 50%, $white 50%);
   .nav-link:hover {
@@ -22,7 +24,13 @@ $darkGray: #222222;
   }
 }
 
-// Media Queries
+/*
+*
+* =====================
+* MEDIA QUERIES
+* =====================
+*
+*/
 @media only screen and (max-width: 600px) {
   .navLogo {
     width: 60%;
