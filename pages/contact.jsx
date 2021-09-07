@@ -3,6 +3,7 @@ import { React, Component, useState, useEffect } from "react";
 import { Form, FormGroup, FormLabel, FormControl } from "react-bootstrap";
 
 import Navbar from "../components/navbar";
+import SimpleLayout from "../components/simplelayout";
 import ContactForm from "../components/contactform";
 import styles from "../styles/contact.module.scss";
 
@@ -27,8 +28,7 @@ export default function Contact() {
   const pathName = useRouter().pathname;
 
   return (
-    <>
-      <Navbar pathName={pathName} />
+    <SimpleLayout pathName={pathName}>
       <main className={styles.main}>
         {/* Contact Info */}
         <div className={styles.contactInfoContainer}>
@@ -47,6 +47,6 @@ export default function Contact() {
           </div>
         </div>
       </main>
-    </>
+    </SimpleLayout>
   );
 }

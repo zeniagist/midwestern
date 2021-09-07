@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { React, Component, useState, useEffect } from "react";
 import Image from "next/image";
 
-import Navbar from "../components/navbar";
+import SimpleLayout from "../components/simplelayout";
 import styles from "../styles/index.module.scss";
 
 export default function Test() {
@@ -69,9 +69,7 @@ export default function Test() {
   const pathName = useRouter().pathname;
 
   return (
-    <>
-      <Navbar pathName={pathName} />
-
+    <SimpleLayout pathName={pathName}>
       <div className={"container " + styles.container}>
         {/* Cards */}
         <div className={styles.cardContainer}>
@@ -130,6 +128,6 @@ export default function Test() {
           )}
         </div>
       </div>
-    </>
+    </SimpleLayout>
   );
 }
