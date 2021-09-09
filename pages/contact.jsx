@@ -13,7 +13,7 @@ export default function Contact() {
   const [contactForm, setContactForm] = useState([]);
 
   useEffect(() => {
-    // get static data from firestor cont
+    // get static data from firestore cont
     db.collection("contactpage").onSnapshot((snapshot) => {
       const postData = [];
       snapshot.forEach((doc) => postData.push({ ...doc.data(), id: doc.id }));
