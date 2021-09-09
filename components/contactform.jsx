@@ -198,9 +198,7 @@ class ContactForm extends React.Component {
               type="submit"
               value="Submit"
               className={
-                this.state.errors.email
-                  ? "formBtn " + styles.formBtnError
-                  : "formBtn"
+                this.state.errors.email ? styles.formBtnError : styles.formBtn
               }
               onSubmit={this.onPost}
             />
