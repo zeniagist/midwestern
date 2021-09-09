@@ -2,10 +2,10 @@ import React from "react";
 import "bootstrap-css-only";
 import "react-bootstrap";
 import axios from "axios";
-
 import { Form, Col, Row } from "react-bootstrap";
-
 import styles from "../styles/contact.module.scss";
+
+import { db } from "../utils/firebase";
 
 class ContactForm extends React.Component {
   constructor() {
@@ -13,7 +13,6 @@ class ContactForm extends React.Component {
 
     this.state = {
       input: {},
-
       errors: {},
     };
 
@@ -167,9 +166,7 @@ class ContactForm extends React.Component {
                 />
                 <span
                   className={
-                    this.state.errors.email
-                      ? styles.formEmailError
-                      : styles.hidden
+                    this.state.errors.email ? styles.formEmailError : "hidden"
                   }
                 >
                   Required
@@ -193,14 +190,12 @@ class ContactForm extends React.Component {
             />
           </div>
 
-          <div className={styles.formBtnContainer}>
+          <div className="formBtnContainer">
             <input
               type="submit"
               value="Submit"
               className={
-                this.state.errors.email
-                  ? "formBtn " + styles.formBtnError
-                  : "formBtn"
+                this.state.errors.email ? "formBtn formBtnError" : "formBtn"
               }
               onSubmit={this.onPost}
             />
@@ -212,3 +207,126 @@ class ContactForm extends React.Component {
 }
 
 export default ContactForm;
+
+// import React, { useState } from "react";
+// import "bootstrap-css-only";
+// import "react-bootstrap";
+// import axios from "axios";
+
+// import { Form, Col, Row } from "react-bootstrap";
+
+// import styles from "../styles/contact.module.scss";
+// // import { firestore } from "../utils/firebase";
+// import { db } from "../utils/firebase";
+
+// const ContactForm = () => {
+//   const [firstName, setFirstName] = useState("");
+//   const [lastName, setLastName] = useState("");
+//   const [title, setTitle] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [message, setMessage] = useState("");
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     db.collection("users")
+//       .add({
+//         firstName: firstName,
+//         lastName: lastName,
+//         email: email,
+//         title: title,
+//         message: message,
+//       })
+//       .catch((err) => console.log(err));
+
+//     setFirstName("");
+//     setLastName("");
+//     setTitle("");
+//     setEmail("");
+//     setMessage("");
+//   };
+//   return (
+//     <div>
+//       <Form onSubmit={handleSubmit}>
+//         <Row>
+//           <Col>
+//             <div className="form-group">
+//               <input
+//                 type="text"
+//                 name="firstName"
+//                 id="firstName"
+//                 value={firstName}
+//                 onChange={(e) => setFirstName(e.target.value)}
+//                 placeholder="First Name"
+//                 maxLength="20"
+//               />
+//             </div>
+//           </Col>
+//           <Col>
+//             <div className="form-group">
+//               <input
+//                 type="text"
+//                 name="lastName"
+//                 id="lastName"
+//                 value={lastName}
+//                 onChange={(e) => setLastName(e.target.value)}
+//                 placeholder="Last Name"
+//                 maxLength="20"
+//               />
+//             </div>
+//           </Col>
+//         </Row>
+//         <Row>
+//           <Col>
+//             <div className="form-group">
+//               <input
+//                 type="text"
+//                 name="title"
+//                 id="title"
+//                 value={title}
+//                 onChange={(e) => setTitle(e.target.value)}
+//                 placeholder="Title"
+//                 maxLength="50"
+//               />
+//             </div>
+//           </Col>
+//           <Col>
+//             <div className="form-group">
+//               <input
+//                 type="email"
+//                 name="email"
+//                 id="email"
+//                 value={email}
+//                 onChange={(e) => setEmail(e.target.value)}
+//                 placeholder="Email"
+//               />
+//             </div>
+//           </Col>
+//         </Row>
+//         <div className="form-group">
+//           <textarea
+//             name="message"
+//             value={message}
+//             placeholder="Message"
+//             className="form-control"
+
+//             rows={5}
+//             id="message"
+//           />
+//         </div>
+//         <div className={styles.formBtnContainer}>
+//           <input
+//             type="submit"
+//             value="Submit"
+//             // className={
+//             //   this.state.errors.email
+//             //     ? "formBtn " + styles.formBtnError
+//             //     : "formBtn"
+//             // }
+//           />
+//         </div>
+//       </Form>
+//     </div>
+//   );
+// };
+
+// export default ContactForm;

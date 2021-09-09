@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import SimpleLayout from "../components/simplelayout";
 import styles from "../styles/index.module.scss";
+// import { createUser } from "../utils/users";
 
 export default function Test() {
   const [cardContent, setCardContent] = useState([]);
@@ -104,6 +105,11 @@ export default function Test() {
               </div>
             </>
           ))}
+        </div>
+        <div>
+          {/* <button onClick={() => createUser({ name: "Test User" })}>
+            Create User
+          </button> */}
         </div>
         {/* Names List */}
         <div className={styles.namesContainer}>
