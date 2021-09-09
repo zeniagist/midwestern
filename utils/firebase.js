@@ -1,7 +1,6 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
+import firebase from "./firebase";
 
-const config = {
+var firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyDEpoOKaigWpGX4cPK-OEwA3K7C8xZGRbk",
   authDomain: "nextjsapp-2c1a6.firebaseapp.com",
   projectId: "nextjsapp-2c1a6",
@@ -9,12 +8,8 @@ const config = {
   messagingSenderId: "181436799777",
   appId: "1:181436799777:web:2b405772abc9b8634bfc60",
   measurementId: "G-T2FJNNHWZN",
-};
+});
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
-}
-
-const db = firebase.firestore();
+var db = firebaseApp.firestore();
 
 export { db };

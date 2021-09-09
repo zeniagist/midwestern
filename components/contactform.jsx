@@ -51,6 +51,7 @@ class ContactForm extends React.Component {
       input["message"] = "";
 
       this.setState({ input: input });
+      console.log(input);
 
       alert("Your form has been submitted!");
     }
@@ -92,18 +93,32 @@ class ContactForm extends React.Component {
   // post contact form data to API
   onPost(e) {
     e.preventDefault();
-    axios({
-      method: "POST",
-      url: "https://api.mwi.dev/contact",
-      data: this.state,
-    }).then((response) => {
-      if (response.data.status === "success") {
-        alert("Message Sent.");
-        this.resetForm();
-      } else if (response.data.status === "fail") {
-        alert("Message failed to send.");
-      }
-    });
+    // db.collection("contacts")
+    //   .add({
+    //     name: name,
+    //     email: email,
+    //     message: message,
+    //   })
+    //   .then(() => {
+    //     setLoader(false);
+    //     alert("Your message has been submitted👍");
+    //   })
+    //   .catch((error) => {
+    //     alert(error.message);
+    //     setLoader(false);
+    //   });
+    // axios({
+    //   method: "POST",
+    //   url: "https://api.mwi.dev/contact",
+    //   data: this.state,
+    // }).then((response) => {
+    //   if (response.data.status === "success") {
+    //     alert("Message Sent.");
+    //     this.resetForm();
+    //   } else if (response.data.status === "fail") {
+    //     alert("Message failed to send.");
+    //   }
+    // });
   }
 
   render() {
