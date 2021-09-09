@@ -6,6 +6,7 @@ import axios from "axios";
 import { Form, Col, Row } from "react-bootstrap";
 
 import styles from "../styles/contact.module.scss";
+import { db } from "../util/firebase";
 
 class ContactForm extends React.Component {
   constructor() {
@@ -37,7 +38,7 @@ class ContactForm extends React.Component {
     event.preventDefault();
 
     if (this.validate()) {
-      console.log(this.state);
+      console.log(this.state.input);
 
       let input = {};
 
@@ -52,6 +53,15 @@ class ContactForm extends React.Component {
       input["message"] = "";
 
       this.setState({ input: input });
+
+      // post contact form data to firebase
+      db.collection("contacts").add({
+        firstName: this.state.input.firstName,
+        lastName: this.state.input.lastName,
+        title: this.state.input.title,
+        email: this.state.input.email,
+        message: this.state.input.message,
+      });
 
       alert("Your form has been submitted!");
     }
@@ -90,23 +100,6 @@ class ContactForm extends React.Component {
     return isValid;
   }
 
-  // post contact form data to API
-  onPost(e) {
-    e.preventDefault();
-    axios({
-      method: "POST",
-      url: "https://api.mwi.dev/contact",
-      data: this.state,
-    }).then((response) => {
-      if (response.data.status === "success") {
-        alert("Message Sent.");
-        this.resetForm();
-      } else if (response.data.status === "fail") {
-        alert("Message failed to send.");
-      }
-    });
-  }
-
   render() {
     return (
       <div>
@@ -116,10 +109,11 @@ class ContactForm extends React.Component {
               <div className="form-group">
                 <input
                   type="text"
-                  name="name"
+                  name="firstName"
                   value={this.state.input.firstName}
                   className="form-control"
                   placeholder="First Name"
+                  onChange={this.handleChange}
                   id="firstName"
                 />
               </div>
@@ -128,10 +122,11 @@ class ContactForm extends React.Component {
               <div className="form-group">
                 <input
                   type="text"
-                  name="name"
+                  name="lastName"
                   value={this.state.input.lastName}
                   className="form-control"
                   placeholder="Last Name"
+                  onChange={this.handleChange}
                   id="lastName"
                 />
               </div>
@@ -142,10 +137,11 @@ class ContactForm extends React.Component {
               <div className="form-group">
                 <input
                   type="text"
-                  name="name"
+                  name="title"
                   value={this.state.input.title}
                   className="form-control"
                   placeholder="Title"
+                  onChange={this.handleChange}
                   id="title"
                 />
               </div>
@@ -183,6 +179,7 @@ class ContactForm extends React.Component {
               name="message"
               value={this.state.input.comment}
               placeholder="Message"
+              onChange={this.handleChange}
               className={
                 this.state.errors.email
                   ? "form-control " + styles.formMessage
@@ -200,7 +197,7 @@ class ContactForm extends React.Component {
               className={
                 this.state.errors.email ? styles.formBtnError : styles.formBtn
               }
-              onSubmit={this.onPost}
+              // onSubmit={this.onPost}
             />
           </div>
         </Form>
