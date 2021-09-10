@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import SimpleLayout from "../components/simplelayout";
 import styles from "../styles/index.module.scss";
+import { db } from "../util/firebase";
 
 export default function Test() {
   const [cardContent, setCardContent] = useState([]);
@@ -54,15 +55,14 @@ export default function Test() {
       )
     );
   };
-
-  // get JSON card content
   useEffect(() => {
-    let url = "https://api.mwi.dev/content/home";
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setCardContent(data.data);
-      });
+    // get static data from firestore collection
+    db.collection("homeCards").onSnapshot((snapshot) => {
+      const postData = [];
+      snapshot.forEach((doc) => postData.push({ ...doc.data(), id: doc.id }));
+      // console.log(postData);
+      setCardContent(postData[0]);
+    });
   }, []);
 
   // get URL pathname
@@ -70,40 +70,60 @@ export default function Test() {
 
   return (
     <SimpleLayout pathName={pathName}>
+      {/* Cards */}
       <div className={"container " + styles.container}>
-        {/* Cards */}
         <div className={styles.cardContainer}>
-          {cardContent.map((item) => (
-            <>
-              <div key={item.id}>
-                <section className={styles.contentCard}>
-                  <div className={styles.cardImg}>
-                    <article className={styles.article}>
-                      <img
-                        src={
-                          item.id === 1
-                            ? "/Talkie.png"
-                            : item.id === 2
-                            ? "/Rabbit.png"
-                            : "/Shield.png"
-                        }
-                        alt={item.title}
-                      />
-                    </article>
-                  </div>
-                  <div className={styles.cardDetails}>
-                    <h1 className={styles.cardTitle}>{item.title}</h1>
-                    <p className={styles.cardContent}>{item.content}</p>
-                  </div>
-                  <div className={styles.cardBtnContainer}>
-                    <article className={styles.article}>
-                      <button className={styles.cardBtn}>Learn More</button>
-                    </article>
-                  </div>
-                </section>
-              </div>
-            </>
-          ))}
+          {/* Card 1 */}
+          <section className={styles.contentCard}>
+            <div className={styles.cardImg}>
+              <article className={styles.article}>
+                <img src={"/Talkie.png"} alt="talkie" />
+              </article>
+            </div>
+            <div className={styles.cardDetails}>
+              <h1 className={styles.cardTitle}>{cardContent.cardTitle1}</h1>
+              <p className={styles.cardContent}>{cardContent.cardContent1}</p>
+            </div>
+            <div className={styles.cardBtnContainer}>
+              <article className={styles.article}>
+                <button className={styles.cardBtn}>Learn More</button>
+              </article>
+            </div>
+          </section>
+          {/* Card 2 */}
+          <section className={styles.contentCard}>
+            <div className={styles.cardImg}>
+              <article className={styles.article}>
+                <img src={"/Rabbit.png"} alt="talkie" />
+              </article>
+            </div>
+            <div className={styles.cardDetails}>
+              <h1 className={styles.cardTitle}>{cardContent.cardTitle2}</h1>
+              <p className={styles.cardContent}>{cardContent.cardContent2}</p>
+            </div>
+            <div className={styles.cardBtnContainer}>
+              <article className={styles.article}>
+                <button className={styles.cardBtn}>Learn More</button>
+              </article>
+            </div>
+          </section>
+          {/* Card 3 */}
+          <section className={styles.contentCard}>
+            <div className={styles.cardImg}>
+              <article className={styles.article}>
+                <img src={"/Shield.png"} alt="talkie" />
+              </article>
+            </div>
+            <div className={styles.cardDetails}>
+              <h1 className={styles.cardTitle}>{cardContent.cardTitle3}</h1>
+              <p className={styles.cardContent}>{cardContent.cardContent3}</p>
+            </div>
+            <div className={styles.cardBtnContainer}>
+              <article className={styles.article}>
+                <button className={styles.cardBtn}>Learn More</button>
+              </article>
+            </div>
+          </section>
         </div>
         {/* Names List */}
         <div className={styles.namesContainer}>
