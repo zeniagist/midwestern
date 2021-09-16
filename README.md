@@ -1,9 +1,11 @@
-# Midwestern Landing Page
+# Midwestern
 
-Midwestern Landing Page is the client-side of a technical challenge for Midwestern Interactive to create a mock landing page built using NextJS with an existing server in Firebase.
+Client-side of a benchmark assessment for [Midwestern Interactive](https://github.com/Midwestern-Interactive) for a landing page with contact form. Built using NextJS with an existing server in Firebase.
 
 This web application allows users to populate a JSON list and indicate if the list is already showing. Users may also use the contact form with user data
 stored in a dynamic Firebase Collection.
+
+**See the hosted project [here](https://midwestern-zg.netlify.app/).**
 
 ![Midwestern Showcase](./public/midwesternShowcase.gif)
 
