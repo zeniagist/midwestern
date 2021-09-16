@@ -1,4 +1,37 @@
-# Technical Challenge
+# Midwestern Landing Page
+
+Midwestern Landing Page is the client-side of a technical challenge for Midwestern Interactive to create a mock landing page built using NextJS with an existing server in Firebase.
+
+This web application allows users to populate a JSON list and indicate if the list is already showing. Users may also use the contact form with user data
+stored in a dynamic Firebase Collection.
+
+![Midwestern Showcase](./public/midwesternShowcase.gif)
+
+## Quick Start 🚀
+
+### Development server
+
+To get started, just clone the repository and run `npm install && npm run dev`:
+
+    git clone https://github.com/iaincollins/nextjs-starter.git
+    npm install
+    npm run dev
+
+Note: If you are running on Windows run install --noptional flag (i.e. `npm install --no-optional`) which will skip installing fsevents.
+
+### Building and deploying in production
+
+If you wanted to run this site in production, you should install modules then build the site with `npm run build` and run it with `npm start`:
+
+    npm install
+    npm run build
+    npm start
+
+You should run `npm run build` again any time you make changes to the site.
+
+Note: If you are already running a webserver on port 80 (e.g. Macs usually have the Apache webserver running on port 80) you can still start the example in production mode by passing a different port as an Environment Variable when starting (e.g. `PORT=3000 npm start`).
+
+## Technical Challenge
 This is a simple challenge to assess a base skill set and architectural mindset.
 Complete to the best of your ability, if you have any questions reach out your contact.
 
@@ -6,7 +39,7 @@ You will find all necessary assets provided in this repository.
 
 Once complete, place your codebase in a github repository and provide the link your contact at Midwestern.
 
-## 1. Front-end Challenge
+### 1. Front-end Challenge
 Any framework or package may be used in addition to any that may have been requested by your contact.
 
 - Programmatically build out both layouts using HTML/CSS/SASS/JS or any other stack/framework mentioned
@@ -45,15 +78,15 @@ Result Object
 - Jordan Heigle
 - Tyler Viles
 
-## 2. Integration Challenge
+### 2. Integration Challenge
 We've developed a very basic API that allows you pull content for the sections in the design.
 
 Please use the following endpoints to populate each of the Lorem Ipsum sections as well as submitting the contact form.
 
-### Base URL
+#### Base URL
 https://api.mwi.dev
 
-### Content Sections
+#### Content Sections
 - GET `/content/{page}` {page} can be `home` or `contact`
 
 Will return an array of JSON objects containing a unique title and description for each section of the design.
@@ -84,7 +117,7 @@ Images are not provided from the API, please hardcode the urls for these.
 }
 ```
 
-### Contact Form
+#### Contact Form
 - POST `/contact`
 
 Accepts a form data object with all the key/value pairs from the form.
@@ -100,7 +133,7 @@ Accepts a form data object with all the key/value pairs from the form.
 }
 ```
 
-## 3. Back-end Challenge
+### 3. Back-end Challenge
 This will allow the client front-end to request content for all Lorem Ipsum sections as well as submit and store results from the contact form.
 
 - Build a basic, non-authenticated API
@@ -113,7 +146,7 @@ This will allow the client front-end to request content for all Lorem Ipsum sect
   - Images src may be hardcoded, or you may store URL in DB
 - Create POST endpoint for storing the results of the contact form in the DB on submit (URL path up to your discretion)
 
-## Resources
+### Resources
 - [Figma](https://api.mwi.dev/figma)
 - [Next.js by Vercel - The React Framework](https://nextjs.org/)
 - [NestJS - A progressive Node.js framework](https://nestjs.com/)
